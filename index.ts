@@ -31,7 +31,7 @@ let lock = false;
 
 const alertsTriggerSync = async () => {
     const triggers = await unifi.getAlertTriggers(readState(STATE_TYPE.trigger));
-    const triggersFlattan = triggers?.map((trigger) => ({...flattenObject(trigger), messageType: "alert_trigger"}));
+    const triggersFlattan = triggers?.map((trigger) => ({...flattenObject(trigger), messageType: "alert_trigger", time: trigger.timestamp}));
     logger.info(`triggers: ${triggersFlattan.length}`);
     await http.push(triggersFlattan);
     if(triggersFlattan.length > 0) {
