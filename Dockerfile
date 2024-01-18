@@ -14,4 +14,4 @@ RUN pnpm install
 # Bundle app source
 COPY . .
 
-CMD [ "ts-node", "index.js" ]
+CMD [ "ts-node", "index.ts" ]
